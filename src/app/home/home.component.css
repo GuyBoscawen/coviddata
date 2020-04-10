@@ -1,1 +1,26 @@
 
+table {
+    width: 100%;
+}
+
+.sticky {
+  height: 400px;
+  overflow: auto;
+}
+
+.flags {
+    width: 3%;
+    padding-right: 5px;
+}
+
+.page-container {
+    margin: 10px 30px;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
