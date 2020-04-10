@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule 
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

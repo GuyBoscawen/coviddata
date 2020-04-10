@@ -20,7 +20,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
-        <td mat-cell *matCellDef="let element"> <img src="{{element.countryInfo.flag}}" class="flags">{{element.country}} </td>
+        <td mat-cell *matCellDef="let element"> <img src="{{element.countryInfo.flag}}" class="flags"> <button (click)="displayGraph($event)">{{element.country}}</button></td>
       </ng-container>
 
       <!-- Weight Column -->
@@ -66,4 +66,22 @@
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
+
+<ng-container *ngIf="selectedCountry">
+    <ngx-charts-line-chart
+      [scheme]="colorScheme"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showGridLines]="true"
+      [xAxisTickFormatting]="xAxisTickFormatting.bind(this)"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="plot"
+      >
+    </ngx-charts-line-chart>
+</ng-container>
 </div>
