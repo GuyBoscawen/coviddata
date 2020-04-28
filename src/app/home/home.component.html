@@ -1,5 +1,9 @@
 <div class="page-container">
+<div class="header">
+    Coronavirus Tracker
+</div>
 
+<div class="table">
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Country">
@@ -62,12 +66,14 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 
 
-<ng-container *ngIf="selectedCountry">
+<ng-container *ngIf="selectCountry">
     <ngx-charts-line-chart
       [scheme]="colorScheme"
       [legend]="legend"
@@ -81,6 +87,7 @@
       [yAxisLabel]="yAxisLabel"
       [timeline]="timeline"
       [results]="plot"
+      animations="false"
       >
     </ngx-charts-line-chart>
 </ng-container>

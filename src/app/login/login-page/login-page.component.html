@@ -1,0 +1,111 @@
+<div class="page-container flex-parent">
+
+
+<div class="login-container flex-parent flex-direction-column">
+<ng-container *ngIf="showlogin">
+    <p class="verso-title">Login</p>
+
+    <input
+        class="normal-input"
+        name="email"
+        id="email"
+        type="text"
+        placeholder="Email"
+        [(ngModel)]="email"
+        (ngModelChange)="checkLogin()"
+    />
+
+    <input class="normal-input"
+        name="password"
+        id="password"
+        type="text"
+        placeholder="Password"
+        [(ngModel)]="password"
+        (ngModelChange)="checkLogin()"
+    />
+
+    <ng-container *ngIf="invalidLogin">
+        <div class="flex-parent verso-error-message">
+            <span>{{errorMessage}}</span>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="allowLogin">
+        <button class="continue-button" (click)="login()">
+            Login
+        </button>
+    </ng-container>
+
+    <ng-container *ngIf="!allowLogin">
+        <button class="continue-button disabled" (click)="displayLoginErrorMessage()">
+            Login
+        </button>
+    </ng-container>
+
+    <button class="back-button" (click)="loginSwitch()">
+        No Account
+    </button>
+
+</ng-container>
+
+
+<ng-container *ngIf="!showlogin">
+
+    <p class="verso-title">Create Your Account</p>
+
+    <input
+        class="normal-input"
+        name="emailNew"
+        id="emailNew"
+        type="text"
+        placeholder="Email"
+        [(ngModel)]="emailNew"
+        (ngModelChange)="checkCreate()"
+    />
+
+    <input
+        class="normal-input"
+        name="password1"
+        id="password1"
+        type="text"
+        placeholder="Password"
+        [(ngModel)]="password1"
+        (ngModelChange)="checkCreate()"
+    />
+
+    <input
+        class="normal-input"
+        name="password2"
+        id="password2"
+        type="text"
+        placeholder="Password"
+        [(ngModel)]="password2"
+        (ngModelChange)="checkCreate()"
+    />
+
+    <ng-container *ngIf="invalidCreate">
+        <div class="flex-parent verso-error-message">
+            <span>{{errorMessage}}</span>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="allowCreate">
+        <button class="continue-button" (click)="createNewAccount()">
+            Create Account
+        </button>
+    </ng-container>
+
+    <ng-container *ngIf="!allowCreate">
+        <button class="continue-button disabled" (click)="displayCreateErrorMessage()">
+            Create Account
+        </button>
+    </ng-container>
+
+    <button class="back-button" (click)="loginSwitch()">
+        Already have an account?
+    </button>
+
+
+</ng-container>
+</div>
+</div>

@@ -9,12 +9,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const track = new NovelCovid();
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+// export interface PeriodicElement {
+//   name: string;
+//   position: number;
+//   weight: number;
+//   symbol: string;
+// }
 
 @Component({
   selector: 'app-home',
@@ -38,6 +38,9 @@ export class HomeComponent implements OnInit {
 
   plot: any[];
   selectedCountry: string;
+  selectCountry: boolean = false;
+
+  retrievedData: any[] = [];
 
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -101,12 +104,14 @@ export class HomeComponent implements OnInit {
   }
 
   displayGraph(event) {
+    this.selectCountry = false;
     this.selectedCountry = event.target.innerHTML
     track.historical(null, this.selectedCountry).then(
         (data) => {
             this.assignPlot(data);
         }
     );
+    this.selectCountry = true;
   }
 
   ngOnInit() {
@@ -114,7 +119,11 @@ export class HomeComponent implements OnInit {
 
       track.countries().then(
           (data) => {
-              this.dataSource = new MatTableDataSource<PeriodicElement>(data);
+              for (let key in data) {
+                  this.retrievedData.push(data[key]);
+              }
+              console.log(this.retrievedData)
+              this.dataSource = new MatTableDataSource(this.retrievedData);
               this.dataSource.paginator = this.paginator;
               this.dataSource.sort = this.sort;
       })

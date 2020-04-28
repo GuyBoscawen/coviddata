@@ -1,0 +1,19 @@
+.page-container {
+  margin: auto;
+  background-color: #88d8b0;
+  height: 100%;
+}
+
+.login-container {
+    width: 200px;
+    margin: auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 1px 1px #888888;
+}
+
+::placeholder {
+    color: #cccccc;
+    opacity: 1;
+}

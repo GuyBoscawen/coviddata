@@ -24,3 +24,12 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    margin: 20px 20px;
+}
