@@ -44,7 +44,7 @@ export class LoginPageComponent implements OnInit {
             this.dataRequestService.getTest(this.emailNew, this.password1).subscribe(
                 data => {
                     console.log(data);
-                    if (data === "account already exists") {
+                    if (data[0] === "account already exists") {
                           this.invalidCreate = true;
                           this.errorMessage = "Account already exists";
                           console.log(this.errorMessage)
@@ -65,13 +65,14 @@ export class LoginPageComponent implements OnInit {
         this.dataRequestService.login(this.email, this.password).subscribe(
             data => {
                 console.log(data)
-                if (data === "invalid_details") {
+                if (data[0] === "invalid_details") {
                     this.invalidLogin = true;
                     this.errorMessage = "Wrong email and/or password, please try again";
                 } else {
                     this.invalidLogin = false;
-                    this.dataService.user_id = data.id;
-                    this.dataService.email = data.email;
+                    this.dataService.user_id = data[0].id;
+                    this.dataService.email = data[0].email;
+                    localStorage.setItem('versoAuthToken', this.dataService.user_id)
                     this.router.navigate(['/contents']);
                 }
             }
@@ -107,6 +108,9 @@ export class LoginPageComponent implements OnInit {
             this.errorMessage = "Please enter a valid password";
         } else if (!this.checkValidString(this.email)) {
             this.errorMessage = "Please enter a valid email";
+        } else {
+            this.errorMessage = "";
+            this.invalidLogin = false;
         }
     }
 
@@ -124,6 +128,7 @@ export class LoginPageComponent implements OnInit {
     }
 
     ngOnInit() {
+        localStorage.removeItem('versoAuthToken');
     }
 
 }

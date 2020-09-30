@@ -1,0 +1,31 @@
+.width-container {
+    max-width: 1100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.title-bar-cotainer {
+    overflow: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+    background-color: white;
+}
+
+.title-bar-container {
+    height: 70px;
+    width: 100%;
+}
+
+.content-container {
+    width: 100%;
+}
+
+.side-container {
+    width: 60px;
+    padding-right: 20px;
+}

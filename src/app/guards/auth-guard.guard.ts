@@ -12,7 +12,9 @@ export class AuthGuardGuard implements CanActivate, CanActivateChild {
     ) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (typeof this.dataService.user_id === 'undefined') {
+        const versoAuthToken = localStorage.getItem('versoAuthToken');
+
+        if (typeof versoAuthToken === 'undefined' || versoAuthToken === null) {
             this.router.navigate(['/login/']);
             return false;
         } else {

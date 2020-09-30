@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ContentsComponent } from './contents/contents.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component'
 
 import { AuthGuardGuard } from 'src/app/guards/auth-guard.guard'
 
@@ -14,12 +15,26 @@ const routes: Routes = [
     },
     {
         path: 'contents',
-        component: ContentsComponent,
-        canActivate: [ AuthGuardGuard ]
+        component: NavBarComponent,
+        canActivate: [ AuthGuardGuard ],
+        canActivateChild: [ AuthGuardGuard ],
+        children: [
+            {
+              path: '',
+              component: ContentsComponent,
+            },
+        ]
+
     },
     {
         path: 'login',
-        loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+        component: NavBarComponent,
+        children: [
+            {
+              path: '',
+              loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+            },
+        ]
     },
     {
         path: 'easter_egg',

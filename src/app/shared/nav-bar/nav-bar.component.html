@@ -1,0 +1,22 @@
+<div class="flex-parent title-bar-container">
+    <div class="flex-parent-align width-container content-container flex-space-between">
+        <a routerLink="/contents" routerLinkActive="active" class="flex-parent">
+            Verso
+        </a>
+    </div>
+
+    <div class="side-container flex-parent-align">
+        <a *ngIf="true"
+            class="verso-bold"
+            routerLink="/login/"
+        >
+            Logout
+        </a>
+    </div>
+
+</div>
+
+<div class="title-bar-container-spacer">
+</div>
+
+<router-outlet></router-outlet>
